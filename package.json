@@ -4,10 +4,10 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint . --ext .js",
-    "lint:fix": "npm run lint -- --fix",
     "prebuild": "npm run lint && npm run test",
     "test": "mocha --exit",
-    "start": "nodemon src"
+    "start:dev": "nodemon src",
+    "start": "node src"
   },
   "keywords": [],
   "author": "",

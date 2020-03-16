@@ -1,9 +1,7 @@
-const express = require('express');
+const apiRouter = require('./api.routes');
+const systemRouter = require('./system.routes');
 
-const router = express.Router();
-
-const helloWorldController = require('../controllers/hello-world');
-
-router.get('/helloworld', helloWorldController.helloWorldController);
-
-module.exports = router;
+module.exports = {
+  api: apiRouter,
+  system: systemRouter,
+};

@@ -1,11 +1,11 @@
 const request = require('supertest');
 const { expect } = require('chai');
-const app = require('../src/index');
+const app = require('../src/app');
 
-describe('GET /helloworld', () => {
+describe('GET /api/hello', () => {
   it('should respond with 200 - OK', (done) => {
     request(app)
-      .get('/helloworld')
+      .get('/api/hello')
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(200)

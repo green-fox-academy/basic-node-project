@@ -1,20 +1,7 @@
-const PORT = 3000;
+const app = require('./app');
 
-const express = require('express');
-
-const app = express();
-const cors = require('cors');
-
-app.use(cors());
-
-app.use(express.json());
-
-const router = require('./routes/index');
-
-app.use(router);
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-  console.log(`Port is listening on ${PORT}`); // eslint-disable-line
+  console.log(`App is listening on ${PORT}`); // eslint-disable-line
 });
-
-module.exports = app;

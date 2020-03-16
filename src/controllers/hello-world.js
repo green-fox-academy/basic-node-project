@@ -1,10 +1,10 @@
-const helloWorldService = require('../services/helloworld');
+const helloWorldService = require('../services/hello-world');
 
-const helloWorldController = (req, res) => {
+const getHelloWorld = (req, res) => {
   helloWorldService.getHelloWorld()
     .then((data) => res.status(200).json(data));
 };
 
 module.exports = {
-  helloWorldController,
+  getHelloWorld,
 };

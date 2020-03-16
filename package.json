@@ -5,7 +5,8 @@
   "scripts": {
     "lint": "eslint . --ext .js",
     "prebuild": "npm run lint && npm run test",
-    "test": "mocha --exit",
+    "test": "yarn test:integration",
+    "test:integration": "mocha --recursive test/",
     "start:dev": "nodemon src",
     "start": "node src"
   },

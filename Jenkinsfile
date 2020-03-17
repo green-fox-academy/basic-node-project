@@ -33,6 +33,11 @@ pipeline {
         }
       }
     }
+    stage ('integration test') {
+      steps {
+        sh 'yarn test:integration'
+      }
+    }
   }
   post {
     always {

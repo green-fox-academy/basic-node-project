@@ -17,7 +17,20 @@ pipeline {
     }
     stage ('unit test') {
       steps {
-        sh 'yarn test'
+        sh 'yarn test:unit:ci'
+      }
+      post {
+        always {
+          junit 'output/test-results/**/*.xml'
+          publishHTML target: [
+            allowMissing         : false,
+            alwaysLinkToLastBuild: false,
+            keepAll              : true,
+            reportDir            : 'output/test-coverage/lcov-report',
+            reportFiles          : 'index.html',
+            reportName           : 'Coverage report'
+          ]
+        }
       }
     }
   }

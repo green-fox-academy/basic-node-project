@@ -4,11 +4,21 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint . --ext .js",
-    "prebuild": "npm run lint && npm run test",
-    "test": "yarn test:integration",
-    "test:integration": "mocha --recursive test/",
+    "test": "yarn test:unit && yarn test:integration",
+    "test:unit": "mocha --recursive src/**/*.spec.js",
+    "test:unit:ci": "yarn test:unit:cover --config mocharc.unit.ci.js",
+    "test:unit:cover": "nyc yarn test:unit",
+    "test:integration": "mocha --recursive test/**/*.spec.js",
     "start:dev": "nodemon src",
     "start": "node src"
+  },
+  "nyc": {
+    "reporter": ["lcov", "text"],
+    "include": ["src/**/*.js"],
+    "exclude": ["**/*.spec.js"],
+    "temp-dir": "./output/nyc-output",
+    "report-dir": "./output/test-coverage",
+    "all": true
   },
   "keywords": [],
   "author": "",
@@ -25,7 +35,9 @@
     "eslint-plugin-import": "^2.20.1",
     "eslint-restricted-globals": "^0.2.0",
     "mocha": "^7.1.0",
+    "mocha-junit-reporter": "^1.23.3",
     "nodemon": "^2.0.2",
+    "nyc": "^15.0.0",
     "supertest": "^4.0.2"
   }
 }

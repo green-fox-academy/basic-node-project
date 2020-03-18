@@ -4,21 +4,28 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint . --ext .js",
-    "test": "yarn test:unit && yarn test:integration",
-    "test:unit": "mocha --recursive src/**/*.spec.js",
-    "test:unit:ci": "yarn test:unit:cover --config mocharc.unit.ci.js",
-    "test:unit:cover": "nyc yarn test:unit",
-    "test:integration": "mocha --recursive test/**/*.spec.js",
+    "test": "mocha --recursive test/**/*.spec.js",
+    "test:ci": "yarn test:cover --config mocharc.ci.js",
+    "test:cover": "nyc yarn test",
     "start:dev": "nodemon src",
     "start": "node src"
   },
   "nyc": {
     "reporter": ["lcov", "text"],
     "include": ["src/**/*.js"],
-    "exclude": ["**/*.spec.js"],
+    "exclude": [
+      "src/index.js",
+      "**/*.spec.js"
+    ],
     "temp-dir": "./output/nyc-output",
     "report-dir": "./output/test-coverage",
-    "all": true
+    "all": true,
+    "check-coverage": true,
+    "per-file": true,
+    "branches": 75,
+    "lines": 75,
+    "functions": 75,
+    "statements": 75
   },
   "keywords": [],
   "author": "",

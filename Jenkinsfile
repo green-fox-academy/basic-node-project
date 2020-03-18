@@ -15,9 +15,9 @@ pipeline {
         sh 'yarn lint'
       }
     }
-    stage ('unit test') {
+    stage ('integration test') {
       steps {
-        sh 'yarn test:unit:ci'
+        sh 'yarn test:ci'
       }
       post {
         always {
@@ -31,11 +31,6 @@ pipeline {
             reportName           : 'Coverage report'
           ]
         }
-      }
-    }
-    stage ('integration test') {
-      steps {
-        sh 'yarn test:integration'
       }
     }
   }

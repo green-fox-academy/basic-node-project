@@ -1,5 +1,5 @@
 const getSystemStatus = (req, res) => {
-  res.send('ok');
+  res.json({ status: 'ok' });
 };
 
 module.exports = { getSystemStatus };

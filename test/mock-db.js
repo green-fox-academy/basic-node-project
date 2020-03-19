@@ -21,9 +21,11 @@ module.exports.connect = async () => {
  * Drop database, close the connection and stop mongod.
  */
 module.exports.closeDatabase = async () => {
-  await mongoose.connection.dropDatabase();
-  await mongoose.connection.close();
-  await mongod.stop();
+  if ([1, 2].includes(mongoose.connection.readyState)) {
+    await mongoose.connection.dropDatabase();
+    await mongoose.connection.close();
+    await mongod.stop();
+  }
 };
 
 /**

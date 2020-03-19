@@ -11,13 +11,8 @@
     "start": "node src"
   },
   "nyc": {
-    "reporter": [
-      "lcov",
-      "text"
-    ],
-    "include": [
-      "src/**/*.js"
-    ],
+    "reporter": ["lcov", "text"],
+    "include": ["src/**/*.js"],
     "exclude": [
       "src/db.js",
       "src/index.js",
@@ -54,8 +49,5 @@
     "nodemon": "^2.0.2",
     "nyc": "^15.0.0",
     "supertest": "^4.0.2"
-  },
-  "peerDependencies": {
-    "dotenv": "^8.2.0"
   }
 }

@@ -19,6 +19,7 @@
       "src/**/*.js"
     ],
     "exclude": [
+      "src/db.js",
       "src/index.js",
       "**/*.spec.js"
     ],

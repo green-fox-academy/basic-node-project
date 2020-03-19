@@ -8,12 +8,10 @@ const mongod = new MongoMemoryServer();
  */
 module.exports.connect = async () => {
   const uri = await mongod.getConnectionString();
-
   const mongooseOpts = {
     useUnifiedTopology: true,
     useNewUrlParser: true,
   };
-
   await mongoose.connect(uri, mongooseOpts);
 };
 

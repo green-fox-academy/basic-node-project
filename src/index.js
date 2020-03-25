@@ -1,14 +1,15 @@
 require('dotenv').config();
 
+const logger = require('./logger');
 const app = require('./app');
 const { dbConnection } = require('./db');
 
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-  console.log(`App is listening on ${PORT}`); // eslint-disable-line
+  logger.info(`App is listening on ${PORT}`);
 });
 
 dbConnection.once('open', () => {
-  console.log('Database connected'); // eslint-disable-line
+  logger.info('Database connected');
 });

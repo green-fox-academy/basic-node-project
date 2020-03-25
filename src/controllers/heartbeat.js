@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const getSystemStatus = async (req, res) => {
+const getSystemStatus = (req, res) => {
   res.json({
     db: mongoose.connection.readyState === 1,
   });

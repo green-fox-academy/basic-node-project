@@ -4,15 +4,20 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint . --ext .js",
-    "test": "mocha --recursive --timeout 60000 test/**/*.spec.js",
+    "test": "mocha --recursive --timeout 60000 --ignore 'node_modules/**' '**/*.spec.js'",
     "test:ci": "yarn test:cover --config mocharc.ci.js",
     "test:cover": "nyc yarn test",
     "start:dev": "nodemon src",
-    "start": "node src"
+    "start": "NODE_ENV=production node src"
   },
   "nyc": {
-    "reporter": ["lcov", "text"],
-    "include": ["src/**/*.js"],
+    "reporter": [
+      "lcov",
+      "text"
+    ],
+    "include": [
+      "src/**/*.js"
+    ],
     "exclude": [
       "src/db.js",
       "src/index.js",
@@ -35,7 +40,9 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.16.4",
-    "mongoose": "^5.9.5"
+    "mongoose": "^5.9.5",
+    "morgan": "^1.10.0",
+    "winston": "^3.2.1"
   },
   "devDependencies": {
     "chai": "^4.2.0",
@@ -48,6 +55,7 @@
     "mongodb-memory-server-core": "^6.3.3",
     "nodemon": "^2.0.2",
     "nyc": "^15.0.0",
+    "sinon": "^9.0.1",
     "supertest": "^4.0.2"
   }
 }

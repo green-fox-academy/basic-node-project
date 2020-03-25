@@ -15,7 +15,7 @@ pipeline {
         sh 'yarn lint'
       }
     }
-    stage ('integration test') {
+    stage ('test') {
       steps {
         sh 'yarn test:ci'
       }

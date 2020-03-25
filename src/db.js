@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+const logger = require('./logger');
+
 const {
   MONGO_HOST,
   MONGO_PORT,
@@ -15,7 +17,7 @@ mongoose.connect(`mongodb://${MONGO_HOST}:${MONGO_PORT}`, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).catch((err) => {
-  console.error(`Couldn't connect to database: ${err}`);  // eslint-disable-line
+  logger.error(`Couldn't connect to database: ${err}`);
 });
 
 module.exports.dbConnection = mongoose.connection;
